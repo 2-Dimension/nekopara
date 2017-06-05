@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zml.nekopara.mapper.TagMapper" >
+  <resultMap id="BaseResultMap" type="Tag" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="tagname" property="tagname" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tag
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" useGeneratedKeys="true" keyProperty="id" >
+    insert into tag (tagname)
+    values (#{tagname,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey"  >
+    update tag
+    set tagname = #{tagname,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" >
+    select id, tagname
+    from tag
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select id, tagname
+    from tag
+  </select>
+  <sql id="baseWhere">
+  	<where>
+  		
+  	</where>
+  </sql>
+  <select id="queryForCount" resultType="int">
+  	select count(id) 
+  	from tag
+  	
+  </select>
+  <select id="queryForCondition" resultMap="BaseResultMap">
+  	select id,tagname
+  	from tag
+  	limit #{start},#{pageSize}
+  </select>
+  
+  
+  
+</mapper>

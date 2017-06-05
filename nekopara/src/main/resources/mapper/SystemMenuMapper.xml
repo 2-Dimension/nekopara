@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zml.nekopara.mapper.SystemMenuMapper" >
+  <resultMap id="BaseResultMap" type="SystemMenu" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="actionUrl" property="actionUrl" jdbcType="VARCHAR" />
+    <result column="intro" property="intro" jdbcType="VARCHAR" />
+    <result column="parent" property="parent" jdbcType="BIGINT" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="indexShow" property="indexShow"  />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" >
+    delete from systemmenu
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert"  useGeneratedKeys="true" keyProperty="id" >
+    insert into systemmenu (name, actionUrl, intro, 
+      parent, type,indexShow)
+    values (#{name,jdbcType=VARCHAR}, #{actionUrl,jdbcType=VARCHAR}, #{intro,jdbcType=VARCHAR}, 
+      #{parent,jdbcType=BIGINT}, #{type,jdbcType=INTEGER}, #{indexShow})
+  </insert>
+  <update id="updateByPrimaryKey" >
+    update systemmenu
+    set name = #{name,jdbcType=VARCHAR},
+      actionUrl = #{actionUrl,jdbcType=VARCHAR},
+      intro = #{intro,jdbcType=VARCHAR},
+      parent = #{parent,jdbcType=BIGINT},
+      type = #{type,jdbcType=INTEGER},
+      indexShow = #{indexShow}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" >
+    select id, name, actionUrl, intro, parent, type,indexShow
+    from systemmenu
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select id, name, actionUrl, intro, parent, type,indexShow
+    from systemmenu
+  </select>
+  <sql id="baseWhere">
+  	<where>
+  		<if test="indexShow!=null">
+  			indexShow = #{indexShow}
+  		</if>
+  	</where>
+  </sql>
+  <select id="list" resultMap="BaseResultMap">
+  	 select id, name, actionUrl, intro, parent, type,indexShow
+     from systemmenu
+  	<include refid="baseWhere"></include> 
+  </select>
+  <select id="getFirstSystemMenu" resultMap="BaseResultMap">
+  	 select id, name, actionUrl, intro, parent, type,indexShow
+     from systemmenu
+     where parent is null
+  </select>
+ 
+  
+</mapper>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zml.nekopara.mapper.AdvertMapper" >
+  <resultMap id="BaseResultMap" type="Advert" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="image" property="image" jdbcType="VARCHAR" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="beginDate" property="beginDate" jdbcType="TIMESTAMP" />
+    <result column="endDate" property="endDate" jdbcType="TIMESTAMP" />
+    <result column="advertPositionId" property="advertPositionId" jdbcType="BIGINT" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey"  >
+    delete from advert
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" useGeneratedKeys="true" keyProperty="id" >
+    insert into advert (name,image,url, beginDate, endDate, 
+      advertPositionId)
+    values (#{name,jdbcType=VARCHAR},#{image,jdbcType=VARCHAR},#{url,jdbcType=VARCHAR}, #{beginDate,jdbcType=TIMESTAMP}, #{endDate,jdbcType=TIMESTAMP}, 
+      #{advertPositionId,jdbcType=BIGINT})
+  </insert>
+  <update id="updateByPrimaryKey" >
+    update advert
+    set name = #{name,jdbcType=VARCHAR},
+   	  image = #{image,jdbcType=VARCHAR},
+   	  url = #{url,jdbcType=VARCHAR},
+      beginDate = #{beginDate,jdbcType=TIMESTAMP},
+      endDate = #{endDate,jdbcType=TIMESTAMP},
+      advertPositionId = #{advertPositionId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap"  >
+    select id, name,image,url, beginDate, endDate, advertPositionId
+    from advert
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select id, name,image,url, beginDate, endDate, advertPositionId
+    from advert
+  </select>
+  <sql id="baseWhere">
+  <where>
+  	<if test="apid!=null">
+  		advertPositionId=#{apid}
+  	</if>
+  	</where>
+  </sql>
+  <select id="queryForCount" resultType="int">
+    select count(id)
+    from advert
+    <include refid="baseWhere"/>
+  </select>
+  <select id="queryForCondition" resultMap="BaseResultMap" >
+    select id, name,image,url, beginDate, endDate, advertPositionId
+    from advert
+    <include refid="baseWhere"/>
+    limit #{start},#{pageSize}
+  </select>
+  <select id="findByApId" resultMap="BaseResultMap">
+  	select id, name,image,url, beginDate, endDate, advertPositionId
+    from advert
+    where advertPositionId=#{apId}
+  </select>
+</mapper>
