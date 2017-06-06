@@ -3,17 +3,16 @@ package com.zml.nekopara.controller;
 import java.io.IOException;
 import java.util.UUID;
 
+import com.zml.nekopara.model.Album;
+import com.zml.nekopara.model.AlbumQueryObject;
+import com.zml.nekopara.service.IAlbumService;
+import com.zml.nekopara.util.PageResult;
+import com.zml.nekopara.util.QiNiuImageUploadUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
-
-import com.user5u.myweb.domain.Album;
-import com.user5u.myweb.domain.AlbumQueryObject;
-import com.user5u.myweb.service.IAlbumService;
-import com.user5u.myweb.util.PageResult;
-import com.user5u.myweb.util.QiNiuImageUploadUtil;
 
 @Controller
 public class AlbumController {
@@ -100,7 +99,7 @@ public class AlbumController {
 	 * @return
 	 */
 	@RequestMapping("/admin/albumList")
-	public String adminQuery(AlbumQueryObject qo,Model model){
+	public String adminQuery(AlbumQueryObject qo, Model model){
 		
 		PageResult pageResult=albumService.query(qo);
 		model.addAttribute("pageResult",pageResult);

@@ -2,20 +2,21 @@ package com.zml.nekopara.controller;
 
 import java.util.List;
 
+import com.zml.nekopara.model.Article;
+import com.zml.nekopara.model.ArticleQueryObject;
+import com.zml.nekopara.model.SEO;
+import com.zml.nekopara.model.Tag;
+import com.zml.nekopara.service.IArticleService;
+import com.zml.nekopara.service.ITagService;
+import com.zml.nekopara.util.PageResult;
+import com.zml.nekopara.util.QueryObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.user5u.myweb.domain.Article;
-import com.user5u.myweb.domain.ArticleQueryObject;
-import com.user5u.myweb.domain.SEO;
-import com.user5u.myweb.domain.Tag;
-import com.user5u.myweb.service.IArticleService;
-import com.user5u.myweb.service.ITagService;
-import com.user5u.myweb.util.PageResult;
-import com.user5u.myweb.util.QueryObject;
+
 
 @Controller
 public class TagController {
@@ -29,7 +30,7 @@ public class TagController {
 	 */
 	
 	@RequestMapping("/findArticleByTag")
-	public String findArticleByTag(ArticleQueryObject qo,Model model){
+	public String findArticleByTag(ArticleQueryObject qo, Model model){
 		PageResult pageResult = articleService.findArticleByTag(qo);
 		model.addAttribute("pageResult",pageResult);
 		model.addAttribute("qo",qo);
@@ -67,7 +68,7 @@ public class TagController {
 	 * @return
 	 */
 	@RequestMapping("/admin/tagEdit")
-	public String tagEdit(Tag tag,SEO seo,String cmd,MultipartFile file,String tags){
+	public String tagEdit(Tag tag, SEO seo, String cmd, MultipartFile file, String tags){
 		//编辑
 		if("edit".equals(cmd)){
 			//如果没有上传图片就不修改原来的图片
@@ -91,7 +92,7 @@ public class TagController {
 	 * @return
 	 */
 	@RequestMapping("/admin/tagList")
-	public String adminQuery(QueryObject qo,Model model){
+	public String adminQuery(QueryObject qo, Model model){
 		
 		PageResult<Tag> pageResult=tagService.query(qo);
 		model.addAttribute("pageResult",pageResult);

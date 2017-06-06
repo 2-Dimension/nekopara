@@ -4,15 +4,15 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import com.zml.nekopara.model.User;
+import com.zml.nekopara.service.IUserService;
+import com.zml.nekopara.util.AjaxResult;
+import com.zml.nekopara.util.QueryObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
-import com.user5u.myweb.domain.User;
-import com.user5u.myweb.service.IUserService;
-import com.user5u.myweb.util.QueryObject;
 
 /**
  * 登录控制器
@@ -24,20 +24,22 @@ public class UserController {
 
 	@Autowired
 	private IUserService userService;
-	@RequestMapping("/admin/login")
-	public String login(User user,HttpSession session){
+	@RequestMapping(value="/admin/login",method = RequestMethod.POST)
+	@ResponseBody
+	public AjaxResult login(User user, HttpSession session){
 		User currUser=userService.login(user);
 		if(currUser!=null){
 			session.setAttribute("USER_IN_SESSION", currUser);
-			return "redirect:/admin/index.html";
+			return new AjaxResult(true,"登录成功");
 		}else{
-			return "/admin/login";
+			return new AjaxResult(false,"登录成功");
 		}
 	}
 	@RequestMapping("/admin/logout")
-	public String logout(HttpSession session){	
+	@ResponseBody
+	public AjaxResult logout(HttpSession session){
 		session.invalidate();
-		return "/admin/login";
+		return new AjaxResult(true,"退出成功");
 	}
 	
 	/**
@@ -51,7 +53,7 @@ public class UserController {
 	 * @return
 	 */
 	@RequestMapping("/admin/userList")
-	public String queryAdmin(@ModelAttribute QueryObject qo,Model model){
+	public String queryAdmin(@ModelAttribute QueryObject qo, Model model){
 		List<User> userList=userService.list(qo);
 		model.addAttribute("userList",userList);
 		return "admin/userList";
