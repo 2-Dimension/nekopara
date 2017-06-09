@@ -36,7 +36,8 @@ public class Article extends BaseDomain{
 	private String sourceUrl;	//来源url
 	private SystemMenu systemMenu;	//文章所属菜单
 	private List<Tag> tagList;		//标签
-	
+	private Integer sequence;		//排序
+
 	public String getSourceDisplay(){
 		return StringUtils.hasLength(source)?source:"原创";
 	}
