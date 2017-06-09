@@ -1,10 +1,5 @@
 package com.zml.nekopara.controller;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
-
 import com.zml.nekopara.model.*;
 import com.zml.nekopara.service.IArticleService;
 import com.zml.nekopara.service.ISEOService;
@@ -18,10 +13,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
-<<<<<<< HEAD
-=======
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
->>>>>>> 8f896118bcbc28a6de5a2d112130f7e60a70c2e2
 
 @Controller
 public class ArticleController {

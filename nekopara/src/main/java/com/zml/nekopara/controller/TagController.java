@@ -1,7 +1,5 @@
 package com.zml.nekopara.controller;
 
-import java.util.List;
-
 import com.zml.nekopara.model.Article;
 import com.zml.nekopara.model.ArticleQueryObject;
 import com.zml.nekopara.model.SEO;
@@ -16,11 +14,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
-<<<<<<< HEAD
-=======
+import java.util.List;
 
 
->>>>>>> 8f896118bcbc28a6de5a2d112130f7e60a70c2e2
+
 @Controller
 public class TagController {
 
