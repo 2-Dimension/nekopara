@@ -1,11 +1,11 @@
 package com.zml.nekopara.service.impl;
 
+import com.zml.nekopara.mapper.SEOMapper;
+import com.zml.nekopara.model.SEO;
+import com.zml.nekopara.service.ISEOService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.user5u.myweb.domain.SEO;
-import com.user5u.myweb.mapper.SEOMapper;
-import com.user5u.myweb.service.ISEOService;
 
 import lombok.Setter;
 
@@ -15,7 +15,7 @@ import lombok.Setter;
  *
  */
 @Service
-public class SEOServiceImpl implements ISEOService{
+public class SEOServiceImpl implements ISEOService {
 
 	@Autowired
 	private SEOMapper seoMapper;

@@ -2,21 +2,17 @@ package com.zml.nekopara.controller;
 
 import java.util.List;
 
+import com.zml.nekopara.model.Advert;
+import com.zml.nekopara.model.AdvertPosition;
+import com.zml.nekopara.model.ArticleQueryObject;
+import com.zml.nekopara.model.SystemMenu;
+import com.zml.nekopara.service.*;
+import com.zml.nekopara.util.PageResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.user5u.myweb.domain.Advert;
-import com.user5u.myweb.domain.AdvertPosition;
-import com.user5u.myweb.domain.ArticleQueryObject;
-import com.user5u.myweb.domain.SystemMenu;
-import com.user5u.myweb.service.IAdvertPositionService;
-import com.user5u.myweb.service.IAdvertService;
-import com.user5u.myweb.service.IArticleService;
-import com.user5u.myweb.service.ISEOService;
-import com.user5u.myweb.service.ISystemMenuService;
-import com.user5u.myweb.util.PageResult;
 
 @Controller
 public class AdvertPositionController {
@@ -102,12 +98,12 @@ public class AdvertPositionController {
 	 * @return
 	 */
 	@RequestMapping("/admin/advertPositionList")
-	public String adminQuery(ArticleQueryObject qo,Model model){
+	public String adminQuery(ArticleQueryObject qo, Model model){
 		
 		PageResult<AdvertPosition> pageResult=advertPositionService.query(qo);
 		model.addAttribute("pageResult",pageResult);
 		model.addAttribute("qo",qo);
-		List<SystemMenu> firstSysetmMenuList = systemMenuService.getFirstSystemMenu();	
+		List<SystemMenu> firstSysetmMenuList = systemMenuService.getFirstSystemMenu();
 		model.addAttribute("firstSysetmMenuList",firstSysetmMenuList);
 		return "/admin/advertPositionList";
 	}

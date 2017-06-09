@@ -3,19 +3,19 @@ package com.zml.nekopara.service.impl;
 import java.util.Date;
 import java.util.List;
 
+import com.zml.nekopara.mapper.ArticleMapper;
+import com.zml.nekopara.model.Article;
+import com.zml.nekopara.model.ArticleQueryObject;
+import com.zml.nekopara.model.Tag;
+import com.zml.nekopara.service.IArticleService;
+import com.zml.nekopara.util.PageResult;
+import com.zml.nekopara.util.QueryObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.user5u.myweb.domain.Article;
-import com.user5u.myweb.domain.ArticleQueryObject;
-import com.user5u.myweb.domain.Tag;
-import com.user5u.myweb.mapper.ArticleMapper;
-import com.user5u.myweb.service.IArticleService;
-import com.user5u.myweb.util.PageResult;
-import com.user5u.myweb.util.QueryObject;
 
 @Service
-public class ArticleServiceImpl implements IArticleService{
+public class ArticleServiceImpl implements IArticleService {
 
 	@Autowired
 	private ArticleMapper articleMapper;

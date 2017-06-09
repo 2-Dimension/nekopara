@@ -5,14 +5,14 @@ import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.Session;
 
+import com.zml.nekopara.service.ISendMessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
 import org.springframework.stereotype.Component;
 
-import com.user5u.myweb.service.ISendMessageService;
-@Component
-public class SendMessageServiceImpl implements ISendMessageService{
+//@Component
+public class SendMessageServiceImpl implements ISendMessageService {
 
 	@Autowired
 	private JmsTemplate jmsTemplate;

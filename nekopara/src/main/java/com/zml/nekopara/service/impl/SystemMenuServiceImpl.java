@@ -2,19 +2,18 @@ package com.zml.nekopara.service.impl;
 
 import java.util.List;
 
+import com.zml.nekopara.mapper.ArticleMapper;
+import com.zml.nekopara.mapper.SystemMenuMapper;
+import com.zml.nekopara.model.Article;
+import com.zml.nekopara.model.ArticleQueryObject;
+import com.zml.nekopara.model.SystemMenu;
+import com.zml.nekopara.model.SystemMenuQueryObject;
+import com.zml.nekopara.service.ISystemMenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.user5u.myweb.domain.Article;
-import com.user5u.myweb.domain.ArticleQueryObject;
-import com.user5u.myweb.domain.SystemMenu;
-import com.user5u.myweb.domain.SystemMenuQueryObject;
-import com.user5u.myweb.mapper.ArticleMapper;
-import com.user5u.myweb.mapper.SystemMenuMapper;
-import com.user5u.myweb.service.ISystemMenuService;
-import com.user5u.myweb.util.QueryObject;
 @Service
-public class SystemMenuServiceImpl implements ISystemMenuService{
+public class SystemMenuServiceImpl implements ISystemMenuService {
 
 	@Autowired
 	private SystemMenuMapper systemMenuMapper;

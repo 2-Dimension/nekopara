@@ -21,7 +21,7 @@
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="order" value="10"></property>
-		<property name="prefix" value="/WEB-INF/views/"></property>
+		<property name="prefix" value="/WEB-INF/"></property>
 		<property name="suffix" value=".jsp"></property>
 	</bean>
 

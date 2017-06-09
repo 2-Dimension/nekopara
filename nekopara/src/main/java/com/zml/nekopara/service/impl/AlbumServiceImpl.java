@@ -2,17 +2,16 @@ package com.zml.nekopara.service.impl;
 
 import java.util.List;
 
+import com.zml.nekopara.mapper.AlbumMapper;
+import com.zml.nekopara.model.Album;
+import com.zml.nekopara.model.AlbumQueryObject;
+import com.zml.nekopara.service.IAlbumService;
+import com.zml.nekopara.util.PageResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.user5u.myweb.domain.Album;
-import com.user5u.myweb.domain.AlbumQueryObject;
-import com.user5u.myweb.domain.Article;
-import com.user5u.myweb.mapper.AlbumMapper;
-import com.user5u.myweb.service.IAlbumService;
-import com.user5u.myweb.util.PageResult;
 @Service
-public class AlbumServiceImpl implements IAlbumService{
+public class AlbumServiceImpl implements IAlbumService {
 
 	@Autowired
 	private AlbumMapper albumMapper;

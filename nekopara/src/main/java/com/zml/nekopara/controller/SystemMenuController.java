@@ -2,17 +2,17 @@ package com.zml.nekopara.controller;
 
 import java.util.List;
 
+import com.zml.nekopara.model.SEO;
+import com.zml.nekopara.model.SystemMenu;
+import com.zml.nekopara.model.SystemMenuQueryObject;
+import com.zml.nekopara.service.ISEOService;
+import com.zml.nekopara.service.ISystemMenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.user5u.myweb.domain.SEO;
-import com.user5u.myweb.domain.SystemMenu;
-import com.user5u.myweb.domain.SystemMenuQueryObject;
-import com.user5u.myweb.service.ISEOService;
-import com.user5u.myweb.service.ISystemMenuService;
 
 /**
  * 菜单controller
@@ -35,7 +35,7 @@ public class SystemMenuController {
 	 * @return
 	 */
 	@RequestMapping("/systemMenuList")
-	public String query(@ModelAttribute SystemMenuQueryObject qo,Model model){
+	public String query(@ModelAttribute SystemMenuQueryObject qo, Model model){
 		List<SystemMenu> systemMenuList=systemMenuService.list(qo);
 		model.addAttribute("systemMenuList",systemMenuList);
 		return "systemMenuList";

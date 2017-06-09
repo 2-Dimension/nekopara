@@ -5,24 +5,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import com.zml.nekopara.model.*;
+import com.zml.nekopara.service.IArticleService;
+import com.zml.nekopara.service.ISEOService;
+import com.zml.nekopara.service.ISystemMenuService;
+import com.zml.nekopara.service.ITagService;
+import com.zml.nekopara.util.PageResult;
+import com.zml.nekopara.util.QiNiuImageUploadUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.user5u.myweb.domain.Article;
-import com.user5u.myweb.domain.ArticleQueryObject;
-import com.user5u.myweb.domain.SEO;
-import com.user5u.myweb.domain.SystemMenu;
-import com.user5u.myweb.domain.SystemMenuQueryObject;
-import com.user5u.myweb.domain.Tag;
-import com.user5u.myweb.service.IArticleService;
-import com.user5u.myweb.service.ISEOService;
-import com.user5u.myweb.service.ISystemMenuService;
-import com.user5u.myweb.service.ITagService;
-import com.user5u.myweb.util.PageResult;
-import com.user5u.myweb.util.QiNiuImageUploadUtil;
 
 @Controller
 public class ArticleController {
@@ -46,7 +41,7 @@ public class ArticleController {
 	 * @return
 	 */
 	@RequestMapping("/articleList")
-	public String query(ArticleQueryObject qo,Model model){
+	public String query(ArticleQueryObject qo, Model model){
 		
 		
 		if(qo.getSystemMenuId()!=null){

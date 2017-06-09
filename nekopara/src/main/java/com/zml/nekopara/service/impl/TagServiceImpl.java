@@ -2,15 +2,14 @@ package com.zml.nekopara.service.impl;
 
 import java.util.List;
 
+import com.zml.nekopara.mapper.TagMapper;
+import com.zml.nekopara.model.Tag;
+import com.zml.nekopara.service.ITagService;
+import com.zml.nekopara.util.PageResult;
+import com.zml.nekopara.util.QueryObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.user5u.myweb.domain.Article;
-import com.user5u.myweb.domain.Tag;
-import com.user5u.myweb.mapper.TagMapper;
-import com.user5u.myweb.service.ITagService;
-import com.user5u.myweb.util.PageResult;
-import com.user5u.myweb.util.QueryObject;
 @Service
 public class TagServiceImpl implements ITagService {
 

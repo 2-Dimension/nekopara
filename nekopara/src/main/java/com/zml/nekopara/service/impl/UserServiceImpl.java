@@ -2,13 +2,12 @@ package com.zml.nekopara.service.impl;
 
 import java.util.List;
 
+import com.zml.nekopara.mapper.UserMapper;
+import com.zml.nekopara.model.User;
+import com.zml.nekopara.service.IUserService;
+import com.zml.nekopara.util.QueryObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.user5u.myweb.domain.User;
-import com.user5u.myweb.mapper.UserMapper;
-import com.user5u.myweb.service.IUserService;
-import com.user5u.myweb.util.QueryObject;
 
 @Service
 public class UserServiceImpl implements IUserService {
