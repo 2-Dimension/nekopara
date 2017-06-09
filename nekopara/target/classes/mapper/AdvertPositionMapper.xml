@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zml.nekopara.mapper.AdvertPositionMapper" >
+  <resultMap id="BaseResultMap" type="AdvertPosition" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="statue" property="statue" jdbcType="BIT" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="width" property="width" jdbcType="INTEGER" />
+    <result column="height" property="height" jdbcType="INTEGER" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" >
+    delete from advertposition
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert"  useGeneratedKeys="true" keyProperty="id" >
+    insert into advertposition (name, statue, type, 
+      width, height)
+    values (#{name,jdbcType=VARCHAR}, #{statue,jdbcType=BIT}, #{type,jdbcType=INTEGER}, 
+      #{width,jdbcType=INTEGER}, #{height,jdbcType=INTEGER})
+  </insert>
+  <update id="updateByPrimaryKey"  >
+    update advertposition
+    set name = #{name,jdbcType=VARCHAR},
+      statue = #{statue,jdbcType=BIT},
+      type = #{type,jdbcType=INTEGER},
+      width = #{width,jdbcType=INTEGER},
+      height = #{height,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap"  >
+    select id, name, statue, type, width, height
+    from advertposition
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select id, name, statue, type, width, height
+    from advertposition
+  </select>
+  <select id="queryForCount" resultType="int">
+  	select count(id) 
+  	from advertposition
+  </select>
+  <select id="queryForCondition" resultMap="BaseResultMap">
+  	select id, name, statue, type, width, height
+    from advertposition
+    limit #{start},#{pageSize}
+  </select>
+</mapper>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zml.nekopara.mapper.AlbumMapper">
+  <resultMap id="BaseResultMap" type="Album">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="image" jdbcType="VARCHAR" property="image" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" >
+    delete from album
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+    insert into album (name, image, url
+      )
+    values (#{name,jdbcType=VARCHAR}, #{image,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" >
+    update album
+    set name = #{name,jdbcType=VARCHAR},
+      image = #{image,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey"  resultMap="BaseResultMap">
+    select id, name, image, url
+    from album
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, name, image, url
+    from album
+  </select>
+  <sql id="baseSql">
+  	<where>
+  		
+  	</where>
+  </sql>
+  <select id="queryForCount" resultType="int">
+  	select count(id)
+  	from album
+  </select>
+  <select id="queryForCondition" resultMap="BaseResultMap">
+  	 select id, name, image, url
+    from album
+    <include refid="baseSql" />
+    limit #{start},#{pageSize}
+  </select>
+</mapper>

@@ -4,17 +4,27 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+<<<<<<< HEAD
 import com.alibaba.fastjson.JSONObject;
 import com.zml.nekopara.model.User;
 import com.zml.nekopara.service.IUserService;
+=======
+import com.zml.nekopara.model.User;
+import com.zml.nekopara.service.IUserService;
+import com.zml.nekopara.util.AjaxResult;
+>>>>>>> 8f896118bcbc28a6de5a2d112130f7e60a70c2e2
 import com.zml.nekopara.util.QueryObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+<<<<<<< HEAD
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+=======
+import org.springframework.web.bind.annotation.*;
+>>>>>>> 8f896118bcbc28a6de5a2d112130f7e60a70c2e2
 
 
 /**
@@ -27,6 +37,7 @@ public class UserController {
 
 	@Autowired
 	private IUserService userService;
+<<<<<<< HEAD
 
 	@RequestMapping(value="/v1/admin/login",method = RequestMethod.GET)
 	public String login(){
@@ -49,12 +60,24 @@ public class UserController {
 			json.put("success",Boolean.FALSE);
 			json.put("msg","登录失败");
 			return json.toString();
+=======
+	@RequestMapping(value="/admin/login",method = RequestMethod.POST)
+	@ResponseBody
+	public AjaxResult login(User user, HttpSession session){
+		User currUser=userService.login(user);
+		if(currUser!=null){
+			session.setAttribute("USER_IN_SESSION", currUser);
+			return new AjaxResult(true,"登录成功");
+		}else{
+			return new AjaxResult(false,"登录成功");
+>>>>>>> 8f896118bcbc28a6de5a2d112130f7e60a70c2e2
 		}
 	}
 	@RequestMapping("/admin/logout")
-	public String logout(HttpSession session){	
+	@ResponseBody
+	public AjaxResult logout(HttpSession session){
 		session.invalidate();
-		return "/admin/login";
+		return new AjaxResult(true,"退出成功");
 	}
 	
 	/**
