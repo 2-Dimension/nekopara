@@ -1,5 +1,6 @@
 package com.zml.nekopara.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.zml.nekopara.model.*;
 import com.zml.nekopara.service.IArticleService;
 import com.zml.nekopara.service.ISEOService;
@@ -10,7 +11,10 @@ import com.zml.nekopara.util.QiNiuImageUploadUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -20,6 +24,7 @@ import java.util.UUID;
 
 
 @Controller
+@RequestMapping("/v1/article")
 public class ArticleController {
 
 	@Autowired
@@ -40,7 +45,7 @@ public class ArticleController {
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping("/articleList")
+	@RequestMapping(value="/list",method = RequestMethod.POST)
 	public String query(ArticleQueryObject qo, Model model){
 		
 		
@@ -86,8 +91,9 @@ public class ArticleController {
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping("/article")
-	public String article(Long id,Model model){
+	@RequestMapping(value="/{id}",method = RequestMethod.GET)
+	@ResponseBody
+	public Object article(@PathVariable Long id, Model model){
 		//按id查询某一篇文章
 		Article article = articleService.view(id);
 		
@@ -110,8 +116,10 @@ public class ArticleController {
 		//查询seo信息
 		SEO seo = seoService.findByTypeAndAsid(SEO.SEO_TYPE_ARTICLE, id);
 		model.addAttribute("seo",seo);
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("article",article);
 		//查询广告信息
-		return "article";
+		return jsonObject;
 	}
 	/**
 	 * =============================后台==================================

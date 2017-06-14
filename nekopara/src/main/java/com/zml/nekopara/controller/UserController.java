@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @author maylor
  */
 @Controller
+
 public class UserController {
 
     @Autowired
