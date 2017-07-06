@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/nekopara-admin/nekopara-admin.iml" filepath="$PROJECT_DIR$/nekopara-admin/nekopara-admin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/nekopara-common/nekopara-common.iml" filepath="$PROJECT_DIR$/nekopara-common/nekopara-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/nekopara-parent.iml" filepath="$PROJECT_DIR$/nekopara-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/nekopara-user/nekopara-user.iml" filepath="$PROJECT_DIR$/nekopara-user/nekopara-user.iml" />
+    </modules>
+  </component>
+</project>
